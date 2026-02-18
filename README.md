@@ -24,7 +24,7 @@ In Claude Code, register the marketplace first:
 ```
 Then install the plugin from this marketplace:
 ```
-/plugin install done@claude-done
+/plugin install claude-done@done
 ```
 
 ### Verify
