@@ -1,0 +1,22 @@
+{
+  "name": "done",
+  "owner": {
+    "name": "Genuifx"
+  },
+  "metadata": {
+    "description": "Session memory skills: save and recall your Claude Code session summaries",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "claude-done",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Genuifx/claude-done.git"
+      },
+      "description": "Session memory skills: save summaries with /done and recall past sessions with /recall",
+      "version": "1.0.0",
+      "strict": true
+    }
+  ]
+}
