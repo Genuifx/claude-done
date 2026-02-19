@@ -2,6 +2,15 @@
   <img src="assets/logo.svg" alt="Claude Done" width="700">
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Claude_Code-Plugin-blueviolet" alt="Claude Code Plugin">
+  <img src="https://img.shields.io/badge/Skills-/done_·_/recall-blue" alt="Skills: /done · /recall">
+  <img src="https://img.shields.io/badge/Notion-Sync-000000?logo=notion&logoColor=white" alt="Notion Sync">
+  <img src="https://img.shields.io/badge/Python-3.6+-3776AB?logo=python&logoColor=white" alt="Python 3.6+">
+  <img src="https://img.shields.io/badge/Dependencies-Zero-brightgreen" alt="Zero Dependencies">
+  <img src="https://img.shields.io/badge/License-MIT-yellow" alt="MIT License">
+</p>
+
 # Claude Done
 
 [English](./README.md) | 中文
@@ -16,6 +25,8 @@
 - **`/recall`** — 搜索和浏览你过去的会话摘要
 
 摘要以纯 Markdown 文件存储，命名和结构保持一致。随着时间推移，你会积累一个可搜索的知识库——记录你做过的每个决策、排除的方案、解决的问题，以及下一步计划。
+
+此外，摘要还可以**自动同步到 Notion** 作为子页面——零依赖，使用内置的 Python 标准库脚本实现。
 
 ## 安装
 
@@ -110,6 +121,51 @@
 | `--last` | `--last 5` | 显示最近 N 条记录 |
 
 参数可组合使用：`--keyword auth --date 7d`
+
+## Notion 同步（可选）
+
+`/done` 可以自动将每条摘要同步到 Notion 作为子页面。首次运行 `/done` 时会询问是否设置。你也可以手动配置：
+
+### 1. 创建 Notion Integration
+
+1. 前往 [notion.so/profile/integrations](https://www.notion.so/profile/integrations)
+2. 点击 **"New integration"**，起个名字（如 "Claude Done"）
+3. 复制 **Internal Integration Token**（以 `ntn_` 或 `secret_` 开头）
+
+### 2. 将 Integration 连接到页面
+
+1. 打开你想存放摘要的 Notion 页面
+2. 点击右上角 **"..."** → **"Connect to"** → 选择你刚创建的 Integration
+
+### 3. 写入配置
+
+创建 `~/.claude-done/config.json`：
+
+```json
+{
+  "notion_token": "ntn_your_token_here",
+  "notion_page_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+}
+```
+
+`notion_page_id` 是页面 URL 末尾的 32 位十六进制字符串。例如：
+
+```
+https://www.notion.so/My-Page-1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d
+                                └─────────── 这部分 ───────────┘
+```
+
+加上连字符格式化为：`1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d`
+
+### 跳过 Notion 同步
+
+如果不需要 Notion 同步，也不想以后再被询问：
+
+```json
+{
+  "notion_sync": false
+}
+```
 
 ## 设计理念
 

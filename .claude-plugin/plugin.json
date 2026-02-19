@@ -1,6 +1,6 @@
 {
   "name": "claude-done",
-  "description": "Session memory skills for Claude Code: save session summaries with /done and recall past work with /recall",
+  "description": "Session memory skills for Claude Code: save session summaries with /done (with optional Notion sync), recall past work with /recall",
   "version": "1.0.0",
   "author": {
     "name": "Genuifx"

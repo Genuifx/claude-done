@@ -2,6 +2,15 @@
   <img src="assets/logo.svg" alt="Claude Done" width="700">
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Claude_Code-Plugin-blueviolet" alt="Claude Code Plugin">
+  <img src="https://img.shields.io/badge/Skills-/done_·_/recall-blue" alt="Skills: /done · /recall">
+  <img src="https://img.shields.io/badge/Notion-Sync-000000?logo=notion&logoColor=white" alt="Notion Sync">
+  <img src="https://img.shields.io/badge/Python-3.6+-3776AB?logo=python&logoColor=white" alt="Python 3.6+">
+  <img src="https://img.shields.io/badge/Dependencies-Zero-brightgreen" alt="Zero Dependencies">
+  <img src="https://img.shields.io/badge/License-MIT-yellow" alt="MIT License">
+</p>
+
 # Claude Done
 
 English | [中文](./README.zh-CN.md)
@@ -16,6 +25,8 @@ Two skills. One saves. One recalls. That's it.
 - **`/recall`** — Searches and browses your past session summaries
 
 Summaries are plain Markdown files with consistent naming and structure. Over time, you build a searchable knowledge base of everything you've worked on — decisions made, alternatives rejected, problems solved, and what's next.
+
+Optionally, summaries can be **auto-synced to Notion** as child pages — zero dependencies, powered by a bundled Python script using only the standard library.
 
 ## Installation
 
@@ -110,6 +121,51 @@ Empty sections are omitted automatically.
 | `--last` | `--last 5` | Show N most recent entries |
 
 Flags can be combined: `--keyword auth --date 7d`
+
+## Notion Sync (Optional)
+
+`/done` can automatically sync each summary to Notion as a child page. First time you run `/done`, it will ask if you want to set this up. You can also configure it manually:
+
+### 1. Create a Notion Integration
+
+1. Go to [notion.so/profile/integrations](https://www.notion.so/profile/integrations)
+2. Click **"New integration"**, give it a name (e.g. "Claude Done")
+3. Copy the **Internal Integration Token** (starts with `ntn_` or `secret_`)
+
+### 2. Connect the Integration to Your Page
+
+1. Open the Notion page where you want summaries saved
+2. Click **"..."** (top right) → **"Connect to"** → select your integration
+
+### 3. Write the Config
+
+Create `~/.claude-done/config.json`:
+
+```json
+{
+  "notion_token": "ntn_your_token_here",
+  "notion_page_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+}
+```
+
+The `notion_page_id` is the 32-character hex string at the end of your page URL. For example:
+
+```
+https://www.notion.so/My-Page-1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d
+                                └─────────── this part ───────────┘
+```
+
+Format it with hyphens: `1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d`
+
+### Skip Notion Sync
+
+If you don't want Notion sync and don't want to be asked again:
+
+```json
+{
+  "notion_sync": false
+}
+```
 
 ## Philosophy
 
