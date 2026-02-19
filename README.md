@@ -4,6 +4,8 @@
 
 # Claude Done
 
+English | [中文](./README.zh-CN.md)
+
 Your sessions with Claude Code are full of decisions, discoveries, and context that vanish the moment you close the terminal. Claude Done fixes that.
 
 Two skills. One saves. One recalls. That's it.
