@@ -30,7 +30,7 @@ Optionally, summaries can be **auto-synced to Notion** as child pages — zero d
 
 ## Installation
 
-### Via Plugin Marketplace
+### Claude Code (via Plugin Marketplace)
 In Claude Code, register the marketplace first:
 ```
 /plugin marketplace add Genuifx/claude-done
@@ -40,9 +40,17 @@ Then install the plugin from this marketplace:
 /plugin install claude-done@done
 ```
 
+### Codex
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Genuifx/claude-done/main/install.sh | sh
+```
+
+Then restart Codex.
+
 ### Verify
 
-In a new Claude Code session:
+In a new session:
 - `/done` — should offer to save a session summary
 - `/recall` — should search your past summaries
 
