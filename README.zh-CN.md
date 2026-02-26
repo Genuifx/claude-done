@@ -30,7 +30,7 @@
 
 ## 安装
 
-### 通过插件市场
+### Claude Code（通过插件市场）
 在 Claude Code 中，先注册市场：
 ```
 /plugin marketplace add Genuifx/claude-done
@@ -40,9 +40,17 @@
 /plugin install claude-done@done
 ```
 
+### Codex
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Genuifx/claude-done/main/install.sh | sh
+```
+
+然后重启 Codex。
+
 ### 验证
 
-在新的 Claude Code 会话中：
+在新会话中：
 - `/done` — 应该会提示保存会话摘要
 - `/recall` — 应该能搜索你的历史摘要
 
